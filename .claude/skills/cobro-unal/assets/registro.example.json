@@ -34,7 +34,15 @@
       "productos": [],
       "_productos": "Pactados en la cláusula NOTA. Van a la sección 3 del informe y son lo único que decide si el paquete lleva la parte 6.",
       "soportes": null,
-      "forma_pago": "unico",
+      "forma_pago": {
+        "_comment": "Estructurada, con montos cuando el contrato los fija. De aquí sale el valor del cobro sin preguntar.",
+        "tipo": "unico",
+        "valor": 4640000,
+        "pagos": []
+      },
+      "pagos_realizados": [
+        {"periodo": "2026-08", "numero": 1, "valor": 3000000}
+      ],
       "supervisor": {
         "_comment": "El designado en el contrato. No se edita: es dato del documento.",
         "nombre": "NOMBRE APELLIDO SUPERVISOR",

@@ -76,7 +76,15 @@ El informe no se toca.
   `supervisor`. El contrato designa "o quien haga sus veces": si firma un encargado, el documento
   va con su nombre y su cédula. Si `firmante` no está confirmado para este periodo, detenete y pedilo.
 - La fecha de pago y el periodo de cobertura son distintos: solo la cobertura iguala al mes cobrado.
-- El valor autorizado de la constancia es el del pago del periodo, no el total del contrato.
+- **El valor autorizado se deriva, nunca se pregunta.** Cascada, en orden: (1) el monto que el
+  contrato fija para este pago; (2) `PAGO ÚNICO` → el total; (3) pago por producto → el del
+  producto entregado; (4) pago final con historial → total menos lo ya cobrado; (5) el **valor
+  mensualizado**, `valor / meses`, que es el mismo `B52:B56` que el Excel ya usó para liquidar la
+  planilla. Si liquidaste la planilla, ese número **ya existe**: usalo.
+- El `Parcial No. ___` tampoco se pregunta: es `numero_de_mes`, el mismo que calcula el avance.
+  En contratos por producto, es el número del producto entregado.
+- Si de verdad ninguno de los cinco casos resuelve, **proponé el mensualizado** y pedí confirmación.
+  Nunca dejes una pregunta abierta del tipo "¿por cuánto es el pago?".
 - En `blanks`, pasá `null` en las posiciones que no correspondan; nunca reordenes la lista.
 - `ensure_rows` de la tabla de obligaciones va con `count = 2 + nº obligaciones` (dos filas de encabezado).
 - La **sección 3, "PRODUCTOS ENTREGADOS A LA FECHA"** (body tabla 2), se llena solo con los
@@ -89,6 +97,7 @@ JSON con: `fase`, `contrato`, `carpeta`, `actividades_redactadas` (la obligació
 escribiste para cada una, para que el usuario lo revise antes de firmar),
 `constancia` (`docx`, `pdf`), `informe` (`docx`, `pdf`),
 `avance` (`meses`, `numero_de_mes`, `periodo_pct`, `acumulado_pct`),
+`valor_cobro` con `{valor, caso_de_la_cascada, de_donde_salio}`,
 `productos_declarados` (lo que quedó en la sección 3; lista vacía si el contrato no pactó ninguno),
 `ops_fallidas`, `campos_en_blanco` (los que esperan la fase 2) y `pendientes_de_firma`.
 Sin prosa alrededor.

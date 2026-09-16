@@ -18,22 +18,35 @@ Leé primero `.claude/skills/cobro-unal/references/mapa-campos.md` y `references
    leelo con `Read` usando el parámetro `pages`. Nunca deduzcas datos de un PDF que no pudiste leer.
 3. Extraé por contrato: tipo y número (encabezado `OSE No. 22` / `OPS No. 487`), año, sede,
    dependencia, `OBJETO GENERAL`, `VALOR` sin la contribución especial, cláusula `PLAZO`,
-   `FORMA DE PAGO` (único / parciales / por producto), `SUPERVISOR` (nombre y cédula),
+   `FORMA DE PAGO` **estructurada** (ver abajo), `SUPERVISOR` (nombre y cédula),
    `LUGAR DE EJECUCION`, obligaciones específicas **textuales** y productos de la cláusula `NOTA`.
    Los productos de la cláusula `NOTA` son los que van a la sección 3 del informe de ejecución;
    si el contrato no pactó ninguno, dejá `productos: []` y no inventes nada.
-4. Clasificá cada contrato en **tres** grupos, nunca dos:
+4. La `FORMA DE PAGO` se extrae con sus montos cuando el contrato los dice, porque de ahí sale el
+   valor del cobro sin preguntarle nada al usuario:
+
+   | Lo que dice el contrato | Qué registrás |
+   |---|---|
+   | `PAGO ÚNICO` | `{"tipo": "unico", "valor": <total>}` |
+   | `PAGOS PARCIALES` sin montos | `{"tipo": "parciales", "valor": null}` |
+   | `UN PAGO DE $X A LA ENTREGA DEL PRODUCTO N° n` | `{"tipo": "por_producto", "pagos": [{"n": 1, "valor": X}, …]}` |
+   | Montos explícitos por cuota | `{"tipo": "cuotas", "pagos": [{"n": 1, "valor": X}, …]}` |
+
+   Copiá los montos **tal como aparecen**. Si el contrato no los fija, `valor: null` y listo:
+   el valor se derivará del mensualizado, no se pregunta.
+
+5. Clasificá cada contrato en **tres** grupos, nunca dos:
    - `vigentes`: su rango de fechas **reales** se solapa con el periodo, aunque sea un día.
    - `fuera_de_periodo`: tiene fechas reales y no se solapan.
    - `sin_fechas`: el contrato no trae fechas. **No decidas su vigencia**: no tenés con qué.
      Va a `faltantes` con `bloquea_calculo: true` y lo resuelve el usuario.
-5. De `Anexos/` sacá lo que haya del periodo:
+6. De `Anexos/` sacá lo que haya del periodo:
    - **Planilla** (número, fecha de pago, periodo de cobertura, total de aportes pagados).
      En la fase 1 lo normal es que **no exista todavía**: eso no es un error, reportala como ausente.
    - **Certificados de ARL**, que pueden ser distintos por contrato. Si hay **más de uno** y no
      podés atribuirlo sin ambigüedad, no adivines: dejalo en `faltantes` como
      `arl.ambiguo` listando los archivos encontrados para que el orquestador pregunte.
-6. Escribí `Cobros/registro/perfil.json` y `Cobros/registro/contratos.json` con la estructura
+7. Escribí `Cobros/registro/perfil.json` y `Cobros/registro/contratos.json` con la estructura
    de `assets/registro.example.json`. Si ya existen, actualizalos sin perder lo ya confirmado.
 
 ## Reglas duras

@@ -170,6 +170,40 @@ Cuando los contratos tienen riesgos distintos, el aporte se paga **por el más a
 decírselo al usuario porque cambia lo que debe pagar. Riesgo 4 y 5 los asume la Universidad:
 el Excel deja ese aporte en `0`.
 
+## El valor del cobro se deriva, no se pregunta
+
+El valor que va en el punto 4 de la constancia **nunca se le pregunta al usuario**: sale del
+contrato o de un número que la skill ya calculó para liquidar la planilla. Cascada, en orden:
+
+| # | Caso | Valor del cobro |
+|---|---|---|
+| 1 | El contrato fija el monto de **este** pago | Ese monto, textual |
+| 2 | `PAGO ÚNICO` | El valor total del contrato |
+| 3 | Pagos por producto con monto | El del producto entregado en el periodo |
+| 4 | Es el **pago final** y hay historial | Valor total − suma de lo ya cobrado |
+| 5 | Pagos parciales sin montos | **El valor mensualizado**: `valor / meses` |
+
+El paso 5 es el que más aplica y es gratis: `valor / meses` es exactamente `B52:B56` del Excel,
+el mismo número con el que se calculó el IBC y los aportes. Si se liquidó la planilla, ese valor
+**ya existe**. Preguntarlo es pedir un dato que ya está sobre la mesa.
+
+Ejemplos reales:
+
+```
+OSE 22 → "EN LA SIGUIENTE FORMA: PAGO ÚNICO"      → caso 2 → $4.640.000
+OSE  5 → "EN LA SIGUIENTE FORMA: PAGOS PARCIALES" → caso 5 → 12.000.000 / 4 = $3.000.000
+OPS 487→ "UN PAGO DE $5.000.000 A LA ENTREGA…"    → caso 3 → $5.000.000
+```
+
+Preguntar solo si ninguno de los cinco casos resuelve, y aun así **proponer el mensualizado** como
+valor por defecto en vez de dejar la pregunta abierta.
+
+### El número del pago
+
+`Parcial No. ___` tampoco se pregunta: es la posición del cobro dentro del contrato. Sale de
+`numero_de_mes`, el mismo que calcula el avance del informe. En contratos que pagan por producto,
+es el número del producto entregado.
+
 ## Validación planilla vs. Excel — bloqueante
 
 `total_aportes` (`I40`, sección 4 del Excel) **debe ser ≤** el total de aportes efectivamente

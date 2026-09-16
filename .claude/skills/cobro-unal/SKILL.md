@@ -4,7 +4,7 @@ description: "Trigger: cobro UNAL, armar paquete de cobro, cuenta de cobro, cons
 license: Apache-2.0
 metadata:
   author: "Daprosero"
-  version: "3.6"
+  version: "3.7"
 ---
 
 ## Activation Contract
@@ -35,6 +35,8 @@ cuando ya se adjuntó la planilla.
   y el PDF del paquete conviven. **Nunca borres un intermedio** después de unir.
 - Si la carpeta del periodo ya existe **sin** `ESTADO.md`, crear `-v2`, `-v3`… Nunca sobrescribir.
 - **Nunca inventar un dato.** Lo que no salga de contratos ni anexos se pregunta.
+- **Nunca preguntar lo que ya se calculó.** El valor del cobro y su número salen del contrato o
+  del mensualizado que el Excel usó para la planilla. Si hiciste el cálculo, tenés el dato.
 - Preguntar de a una cosa por vez y esperar respuesta.
 - Ejecutar los scripts con `.claude/skills/cobro-unal/.venv/bin/python`; crearlo con `assets/setup.sh` si falta.
 - Todo archivo generado vive bajo `$HOME`: Word y Excel no pueden escribir en `/tmp` y se cuelgan.
@@ -48,6 +50,7 @@ cuando ya se adjuntó la planilla.
 | Dato ya resuelto en `Cobros/registro/` | Reusarlo, no volver a preguntar |
 | `firmante` ya está en el registro | Confirmarlo igual: puede firmar otro este periodo |
 | Hay que llenar actividades ejecutadas | Redactarlas desde las obligaciones y mostrarlas; no preguntarlas en blanco |
+| Hay que poner el valor del cobro | Derivarlo del contrato o del mensualizado ya calculado. **Nunca preguntarlo** |
 | `pdftotext` devuelve vacío | Contrato escaneado: leerlo con `Read` (visión) |
 | Contrato en `contratos_sin_fechas` | Preguntar fechas reales **y** si aplica al periodo. Nunca deducirlas del plazo |
 | Más de un certificado ARL en `Anexos/` | Preguntar cuál corresponde a cada contrato |
