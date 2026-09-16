@@ -11,6 +11,10 @@ Cobros/*
 Cobros/registro/*
 !Cobros/registro/.gitkeep
 
+# Estado local de herramientas
+.atl/
+.pi/
+
 # Entorno local
 .claude/skills/cobro-unal/.venv/
 __pycache__/
