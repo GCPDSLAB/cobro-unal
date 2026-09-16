@@ -13,7 +13,7 @@ Usage:
     {
       "D17": {"t": "s", "v": "NOMBRE APELLIDO CONTRATISTA"},
       "D18": {"t": "n", "v": 1000000000},
-      "G23": {"t": "d", "v": "2026-09-04"}
+      "G23": {"t": "d", "v": "AAAA-MM-DD"}
     }
 
 Types: "s" string, "n" number, "d" ISO date (yyyy-mm-dd).

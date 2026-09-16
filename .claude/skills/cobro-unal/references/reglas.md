@@ -47,17 +47,17 @@ La frontera es exacta: **solo tres cosas dependen de la planilla.**
 ```
 Cobros/
 ├── registro/                  perfil.json · contratos.json   (persiste entre periodos)
-└── 2026-09/
+└── AAAA-MM/
     ├── certificacion-cedular.xlsx            libro único del periodo · todos los contratos
     ├── ESTADO.md                             fase actual, monto a pagar, pendientes
-    ├── OSE-22-2026/
+    ├── TIPO-NNN-AAAA/
     │   ├── constancia.docx                   editable
     │   ├── constancia.pdf                    suelto
     │   ├── informe.docx                      editable
     │   ├── informe.pdf                       suelto
     │   ├── certificacion-cedular.pdf         suelto · mismo libro, D36 = este contrato
-    │   └── PAQUETE-OSE-22-2026-09.pdf        agrupado · se crea en la fase 2
-    └── OPS-487-2026/
+    │   └── PAQUETE-TIPO-NNN-AAAA-MM.pdf        agrupado · se crea en la fase 2
+    └── TIPO-MMM-AAAA/
         └── …
 ```
 
@@ -190,9 +190,9 @@ el mismo número con el que se calculó el IBC y los aportes. Si se liquidó la 
 Ejemplos reales:
 
 ```
-OSE 22 → "EN LA SIGUIENTE FORMA: PAGO ÚNICO"      → caso 2 → $4.640.000
-OSE  5 → "EN LA SIGUIENTE FORMA: PAGOS PARCIALES" → caso 5 → 12.000.000 / 4 = $3.000.000
-OPS 487→ "UN PAGO DE $5.000.000 A LA ENTREGA…"    → caso 3 → $5.000.000
+"EN LA SIGUIENTE FORMA: PAGO ÚNICO"                    → caso 2 → el valor total
+"EN LA SIGUIENTE FORMA: PAGOS PARCIALES"  (sin montos) → caso 5 → valor / meses
+"UN PAGO DE $X A LA ENTREGA DEL PRODUCTO N° n"         → caso 3 → $X
 ```
 
 Preguntar solo si ninguno de los cinco casos resuelve, y aun así **proponer el mensualizado** como
@@ -262,9 +262,9 @@ se deja constancia en el reporte y el paquete se arma igual — no bloquea.
 No inventes la sección 3: se llena solo con los productos pactados en la cláusula `NOTA` del
 contrato. Si el contrato no pactó ninguno, queda vacía y ahí se acaba el asunto.
 
-> Ojo con los contratos que pagan **por producto entregado** (OPS 487: "un pago de $5.000.000 a la
-> entrega del producto N° 1"). Ahí el `Parcial No.___` de la constancia es el número del producto,
-> y la sección 3 debe declarar justamente ese.
+> Ojo con los contratos que pagan **por producto entregado** ("un pago de $X a la entrega del
+> producto N° n"). Ahí el `Parcial No.___` de la constancia es el número del producto, y la
+> sección 3 debe declarar justamente ese.
 
 ## Contratos escaneados
 

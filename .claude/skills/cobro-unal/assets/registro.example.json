@@ -1,6 +1,5 @@
 {
-  "_comment": "Estructura de registro/perfil.json y registro/contratos.json. Lo que se resuelve una vez no se vuelve a preguntar.",
-
+  "_comment": "Estructura de registro/perfil.json y registro/contratos.json. Valores de ejemplo, no reales.",
   "perfil": {
     "nombre": "NOMBRE APELLIDO CONTRATISTA",
     "documento_tipo": "CC",
@@ -8,40 +7,43 @@
     "documento_formateado": "C.C. 1.000.000.000",
     "correo_institucional": "contratista@unal.edu.co",
     "pensionado": "NO",
-    "ciudad_expedicion": "Manizales"
+    "ciudad_expedicion": "CIUDAD"
   },
-
   "contratos": [
     {
-      "id": "OSE-22-2026",
-      "archivo": "Contratos/OSE 22 4012 2026.pdf",
+      "id": "TIPO-NNN-AAAA",
+      "archivo": "Contratos/<archivo>.pdf",
       "tipo": "OSE",
-      "numero": 22,
-      "anio": 2026,
+      "numero": 999,
+      "anio": 2000,
       "modalidad_constancia": "OSE - Orden contractual de servicios",
-      "sede": "SEDE MANIZALES",
-      "dependencia": "FACULTAD DE ADMINISTRACIÓN",
-      "quipu": 4012,
-      "valor_sin_iva": 4640000,
-      "fecha_inicio": "2026-09-04",
-      "fecha_terminacion": "2026-09-19",
-      "fechas_origen": "acta_de_inicio",
-      "objeto": "ORDEN CONTRACTUAL MÍNIMA PARA PRESTAR SERVICIOS PROFESIONALES ...",
+      "sede": "SEDE",
+      "dependencia": "DEPENDENCIA",
+      "quipu": 9999,
+      "valor_sin_iva": 10000000,
+      "fecha_inicio": "AAAA-MM-DD",
+      "fecha_terminacion": "AAAA-MM-DD",
+      "fechas_origen": "contrato | acta_de_inicio",
+      "objeto": "OBJETO GENERAL, TEXTUAL DEL CONTRATO",
       "obligaciones": [
-        "A. ORIENTAR CONFERENCIAS EN LOS POSGRADOS ...",
-        "B. ORIENTAR Y ASESORAR EN ACTIVIDADES ACADÉMICAS ..."
+        "A. PRIMERA OBLIGACIÓN, TEXTUAL",
+        "B. SEGUNDA OBLIGACIÓN, TEXTUAL"
       ],
       "productos": [],
-      "_productos": "Pactados en la cláusula NOTA. Van a la sección 3 del informe y son lo único que decide si el paquete lleva la parte 6.",
+      "_productos": "Pactados en la cláusula NOTA. Van a la sección 3 del informe y son lo único que decide si el paquete lleva la parte 7.",
       "soportes": null,
       "forma_pago": {
         "_comment": "Estructurada, con montos cuando el contrato los fija. De aquí sale el valor del cobro sin preguntar.",
-        "tipo": "unico",
-        "valor": 4640000,
+        "tipo": "unico | parciales | por_producto | cuotas",
+        "valor": 10000000,
         "pagos": []
       },
       "pagos_realizados": [
-        {"periodo": "2026-08", "numero": 1, "valor": 3000000}
+        {
+          "periodo": "AAAA-MM",
+          "numero": 1,
+          "valor": 2500000
+        }
       ],
       "supervisor": {
         "_comment": "El designado en el contrato. No se edita: es dato del documento.",
@@ -55,29 +57,31 @@
         "documento": "20000000",
         "correo": null,
         "telefono": null,
-        "confirmado_en_periodo": "2026-09"
+        "confirmado_en_periodo": "AAAA-MM"
       },
       "riesgo_arl": "Riesgo 1",
       "riesgo_arl_origen": "certificado_arl",
-      "faltantes": ["supervisor.correo", "supervisor.telefono"]
+      "faltantes": [
+        "firmante.correo",
+        "firmante.telefono"
+      ]
     }
   ],
-
   "periodos": {
-    "2026-09": {
+    "AAAA-MM": {
       "planilla": {
-        "numero": "9876543210",
-        "fecha_pago": "2026-09-02",
-        "periodo_cobertura": "2026-09",
-        "total_aportes_pagados": 1150000,
-        "archivo": "Anexos/planilla_2026-09.pdf"
+        "numero": "NNNNNNNNNN",
+        "fecha_pago": "AAAA-MM-DD",
+        "periodo_cobertura": "AAAA-MM",
+        "total_aportes_pagados": 1000000,
+        "archivo": "Anexos/<planilla>.pdf"
       },
       "excel": {
-        "total_aportes": 1119100,
-        "valor_mensualizado_total": 9640000,
-        "ibc_consolidado": 3856000
+        "total_aportes": 990000,
+        "valor_mensualizado_total": 2500000,
+        "ibc_consolidado": 1000000
       },
-      "validacion_aportes": "OK: 1119100 <= 1150000"
+      "validacion_aportes": "OK: 990000 <= 1000000"
     }
   }
 }

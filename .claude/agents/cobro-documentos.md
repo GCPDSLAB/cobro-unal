@@ -67,8 +67,8 @@ El informe no se toca.
   periodo, con el vocabulario del contrato.
 - **No inventes hechos concretos.** Nada de cantidades, fechas puntuales, nombres de personas,
   entregables o resultados que no estén en el contrato. Si la obligación dice "implementar modelos
-  de aprendizaje automático", la actividad es que eso se implementó en el periodo — no "se
-  entrenaron 12 modelos con 200 muestras". El usuario firma este documento: los detalles que
+  X", la actividad es que eso se ejecutó en el periodo — no "se realizaron 12 sesiones con
+  200 registros". El usuario firma este documento: los detalles que
   agregue son suyos, los que inventes vos son falsos.
 - Si el contrato pactó productos, podés referenciarlos: están en el contrato.
 - El nº de planilla, su fecha de pago y su periodo de cobertura salen de la planilla, nunca del Excel.

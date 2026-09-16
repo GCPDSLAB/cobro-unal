@@ -71,7 +71,7 @@ Después de la corrida completa de 1B, por cada contrato:
 `QUIPU-TIPO-NÚMERO-AÑO`:
 
 ```json
-{"D36": {"t": "s", "v": "4061-OSE-5-2026"}}
+{"D36": {"t": "s", "v": "QUIPU-TIPO-NÚMERO-AÑO"}}
 ```
 
 `--no-clear` es obligatorio: sin él borrarías todo el libro.
