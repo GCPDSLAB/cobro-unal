@@ -1,0 +1,75 @@
+{
+  "_comment": "Estructura de registro/perfil.json y registro/contratos.json. Lo que se resuelve una vez no se vuelve a preguntar.",
+
+  "perfil": {
+    "nombre": "NOMBRE APELLIDO CONTRATISTA",
+    "documento_tipo": "CC",
+    "documento_numero": 1000000000,
+    "documento_formateado": "C.C. 1.000.000.000",
+    "correo_institucional": "contratista@unal.edu.co",
+    "pensionado": "NO",
+    "ciudad_expedicion": "Manizales"
+  },
+
+  "contratos": [
+    {
+      "id": "OSE-22-2026",
+      "archivo": "Contratos/OSE 22 4012 2026.pdf",
+      "tipo": "OSE",
+      "numero": 22,
+      "anio": 2026,
+      "modalidad_constancia": "OSE - Orden contractual de servicios",
+      "sede": "SEDE MANIZALES",
+      "dependencia": "FACULTAD DE ADMINISTRACIÓN",
+      "quipu": 4012,
+      "valor_sin_iva": 4640000,
+      "fecha_inicio": "2026-09-04",
+      "fecha_terminacion": "2026-09-19",
+      "fechas_origen": "acta_de_inicio",
+      "objeto": "ORDEN CONTRACTUAL MÍNIMA PARA PRESTAR SERVICIOS PROFESIONALES ...",
+      "obligaciones": [
+        "A. ORIENTAR CONFERENCIAS EN LOS POSGRADOS ...",
+        "B. ORIENTAR Y ASESORAR EN ACTIVIDADES ACADÉMICAS ..."
+      ],
+      "productos": [],
+      "_productos": "Pactados en la cláusula NOTA. Van a la sección 3 del informe y son lo único que decide si el paquete lleva la parte 6.",
+      "soportes": null,
+      "forma_pago": "unico",
+      "supervisor": {
+        "_comment": "El designado en el contrato. No se edita: es dato del documento.",
+        "nombre": "NOMBRE APELLIDO SUPERVISOR",
+        "documento": "20000000"
+      },
+      "firmante": {
+        "_comment": "Quien realmente firma. Se confirma cada periodo: el contrato dice 'o quien haga sus veces'.",
+        "es_el_del_contrato": true,
+        "nombre": "NOMBRE APELLIDO SUPERVISOR",
+        "documento": "20000000",
+        "correo": null,
+        "telefono": null,
+        "confirmado_en_periodo": "2026-09"
+      },
+      "riesgo_arl": "Riesgo 1",
+      "riesgo_arl_origen": "certificado_arl",
+      "faltantes": ["supervisor.correo", "supervisor.telefono"]
+    }
+  ],
+
+  "periodos": {
+    "2026-09": {
+      "planilla": {
+        "numero": "9876543210",
+        "fecha_pago": "2026-09-02",
+        "periodo_cobertura": "2026-09",
+        "total_aportes_pagados": 1150000,
+        "archivo": "Anexos/planilla_2026-09.pdf"
+      },
+      "excel": {
+        "total_aportes": 1119100,
+        "valor_mensualizado_total": 9640000,
+        "ibc_consolidado": 3856000
+      },
+      "validacion_aportes": "OK: 1119100 <= 1150000"
+    }
+  }
+}

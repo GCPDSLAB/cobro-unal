@@ -1,0 +1,18 @@
+# Datos personales y documentos sujetos a confidencialidad: nunca se versionan.
+Contratos/*
+!Contratos/.gitkeep
+Anexos/*
+!Anexos/.gitkeep
+
+# Salida generada por la skill
+Cobros/*
+!Cobros/.gitkeep
+!Cobros/registro/
+Cobros/registro/*
+!Cobros/registro/.gitkeep
+
+# Entorno local
+.claude/skills/cobro-unal/.venv/
+__pycache__/
+.DS_Store
+~$*
