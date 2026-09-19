@@ -32,9 +32,10 @@ no solo lo que faltaba.
 1. Leé `Cobros/registro/perfil.json` y `contratos.json`.
 2. Armá `Cobros/<yyyy-mm>/excel_data.json` con el mapa celda → `{"t": "s|n|d", "v": ...}`.
    Una fila por contrato vigente, empezando en la 23. `t:"d"` lleva fecha ISO `yyyy-mm-dd`.
-3. **Dejá `C42` y `E45` sin escribir.** Dependen de la planilla y su ausencia no altera los aportes.
-   El script limpia el bloque de contratos y esos dos campos antes de escribir, así que el ejemplo
-   que trae el archivo de `Formatos/` no sobrevive.
+3. **Dejá `E45` sin escribir.** Depende de la planilla y su ausencia no altera los aportes.
+   `C42` sí se escribe en fase 1, con el mismo valor y formato que `C41`. El script limpia el
+   bloque de contratos y esas celdas antes de escribir, así que el ejemplo que trae el archivo
+   de `Formatos/` no sobrevive.
 4. Ejecutá:
 
    ```
@@ -78,8 +79,12 @@ Después de la corrida completa de 1B, por cada contrato:
 
 ## Fase 2 — con la planilla adjunta
 
-Escribí un `excel_data.json` con **solo** `C42` (periodo de cobertura de la planilla, día 1 del mes)
-y `E45`, y volvé a correr el script sobre el mismo `.xlsx` con el mismo `--pdf`, agregando
+Antes de escribir, comparás `C42` (ya escrito en fase 1 con el mismo valor que `C41`) contra el
+periodo de cobertura real de la planilla adjunta. Si coinciden, `C42` no cambia; si difieren,
+corregilo con el valor real y avisá al usuario.
+
+Escribí un `excel_data.json` con `E45` y, solo si tuviste que corregirlo, `C42` con el valor real
+de cobertura, y volvé a correr el script sobre el mismo `.xlsx` con el mismo `--pdf`, agregando
 **`--no-clear`**. Sin esa bandera borrarías todo lo de la fase 1.
 
 `E45` es `"  SI  "` (dos espacios a cada lado) únicamente si `C41` y `C42` son el mismo mes.

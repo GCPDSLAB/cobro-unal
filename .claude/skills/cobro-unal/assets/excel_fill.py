@@ -144,7 +144,7 @@ def main() -> int:
     parser.add_argument("--data", required=True, type=pathlib.Path)
     parser.add_argument("--pdf", type=pathlib.Path)
     parser.add_argument("--no-clear", action="store_true",
-                        help="keep existing contents (phase 2, when only C42/E45 change)")
+                        help="keep existing contents (phase 2, when only E45 changes)")
     args = parser.parse_args()
 
     xlsx = args.xlsx.resolve()

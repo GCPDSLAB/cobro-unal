@@ -93,8 +93,8 @@ cuando ya se adjuntó la planilla.
 7. Crear `Cobros/<yyyy-mm>/<TIPO>-<Nº>-<AÑO>/` por cada contrato a cobrar, con su copia de la
    constancia y del informe.
 8. Relanzar `cobro-excel` con `fase: 1` para escribir los datos de identificación que faltaban
-   (nombre, documento, correo, QUIPU, tipo y número de orden) y exportar **un PDF del cedular por
-   contrato**, variando solo `D36`.
+   (nombre, documento, correo, QUIPU, tipo y número de orden) y `C42` (mismo valor y formato que
+   `C41`), y exportar **un PDF del cedular por contrato**, variando solo `D36`.
 9. Lanzar `cobro-documentos` con `fase: 1` por cada contrato: informe completo y constancia
    completa **salvo el punto 2**, cuyos espacios quedan en blanco.
    Mostrar al usuario las `actividades_redactadas` para que las ajuste si quiere: él firma
@@ -111,7 +111,8 @@ cuando ya se adjuntó la planilla.
 13. Relanzar `cobro-extractor` para releer `Anexos/`. Si la planilla o un ARL siguen faltando,
     decir qué y volver a esperar.
 14. Validar `total_aportes <= aportes pagados en la planilla`. Si falla, detener y reportar la diferencia.
-15. Lanzar `cobro-excel` con `fase: 2`: completa `C42` y `E45` y reexporta el PDF.
+15. Lanzar `cobro-excel` con `fase: 2`: valida `C42` contra la planilla (corrige y avisa si
+    difiere) y completa `E45`, y reexporta el PDF.
 16. Lanzar `cobro-documentos` con `fase: 2`: completa el punto 2 de cada constancia y reexporta.
 17. Lanzar `cobro-paquete`: un PDF por contrato, con la copia del cedular y los soportes al final.
     Actualizar `ESTADO.md` a completado.

@@ -25,17 +25,18 @@ no se puede tener la planilla antes de diligenciarlo.
 
 **Fase 1 — sin planilla.** Se parte en dos:
 - **1A**: se pregunta solo lo que bloquea el cálculo y se entrega **el monto a pagar**.
-- **1B**: se completa el resto — Excel salvo `C42` y `E45`, informe de ejecución completo, y
-  constancia completa salvo el punto 2. Termina esperando.
+- **1B**: se completa el resto — Excel salvo `E45` (`C42` ya queda con el mismo valor y formato
+  que `C41`), informe de ejecución completo, y constancia completa salvo el punto 2. Termina
+  esperando.
 
-**Fase 2 — con planilla y ARL.** Se valida el monto, se completan los tres campos que faltaban
-y se arman los paquetes.
+**Fase 2 — con planilla y ARL.** Se valida el monto, se completa `E45` y la constancia, se
+**valida** `C42` contra la planilla y se arman los paquetes.
 
 La frontera es exacta: **solo tres cosas dependen de la planilla.**
 
 | Dónde | Qué | Fase |
 |---|---|---|
-| Excel `C42` | Periodo de la planilla | 2 |
+| Excel `C42` | Periodo de la planilla | Se escribe en 1 (igual a `C41`), se **valida** en 2 |
 | Excel `E45` | Declaración disminución base retención | 2 |
 | Constancia `(5,0)` | Nº de planilla · fecha de pago · periodo de cobertura | 2 |
 
@@ -217,10 +218,13 @@ Reportar ambos valores y la diferencia.
 La planilla tiene dos fechas distintas y solo una debe coincidir:
 
 - **Fecha de pago** → espacio 2 de la constancia. No tiene que coincidir con nada.
-- **Periodo de cobertura** → `C42` del Excel y espacio 3 de la constancia, y **debe ser igual
-  al mes que se está cobrando**.
+- **Periodo de cobertura** → espacio 3 de la constancia, y **debe ser igual al mes que se está
+  cobrando**.
 
-Si difieren, `E45` solo admite `NO` y se pierde la disminución de base de retención.
+`C42` ya se escribió en la fase 1 con el mismo valor que `C41`. La fase 2 lo compara contra el
+periodo de cobertura real de la planilla: si coinciden, `C42` queda igual; si difieren, se corrige
+`C42` con el valor real y se avisa al usuario. Esa diferencia es justo la que hace que `E45` solo
+admita `NO` y se pierda la disminución de base de retención.
 
 ## Parámetros de la vigencia
 

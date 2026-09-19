@@ -1,7 +1,8 @@
 # Mapa de campos por formato
 
-Los campos marcados **FASE 2** son los únicos que dependen de la planilla. Todo lo demás se
-diligencia en la fase 1, antes de tenerla.
+Los campos marcados **FASE 2** son los únicos que dependen de la planilla para escribirse.
+`C42` es la excepción: se escribe en fase 1 (igual a `C41`) pero la fase 2 lo valida contra la
+planilla. Todo lo demás se diligencia en la fase 1, antes de tenerla.
 
 Fuente de cada dato: `CONTRATO` (PDF en `Contratos/`), `ANEXO` (PDF en `Anexos/`),
 `PERFIL` (`registro/perfil.json`), `CALCULADO` por la skill, `PREGUNTAR` al usuario.
@@ -36,7 +37,7 @@ En la fase 2 se corre con `--no-clear` para no borrar lo de la fase 1.
 | `D36` | Contrato al que aplican deducciones | PREGUNTAR, solo si `B57 > 95 UVT` |
 | `C37` `C38` `C39` `E37` `E38` `E39` | 6 anexos de deducción `SI`/`NO` | PREGUNTAR (por defecto `NO`) |
 | `C41` | Periodo de solicitud de pago | Input de la skill (día 1 del mes) |
-| `C42` | Periodo de la planilla | **FASE 2** · ANEXO planilla, periodo de **cobertura** |
+| `C42` | Periodo de la planilla | **FASE 1** · mismo valor y formato que `C41` · FASE 2 la **valida** contra el periodo de **cobertura** de la planilla del ANEXO y corrige + avisa si difiere |
 | `E45` | Declaración disminución base retención | **FASE 2** · `  SI  ` solo si `C41 == C42`; si no, la lista solo ofrece `NO` |
 
 Listas cerradas:
