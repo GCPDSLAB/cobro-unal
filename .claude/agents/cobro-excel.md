@@ -18,10 +18,13 @@ La fase 1 se corre **dos veces** y la diferencia es cuántos datos hay disponibl
 | Pasada | Qué escribís | Para qué |
 |---|---|---|
 | **1A** | Solo lo que entra al cálculo: `I18`, y por fila `F`, `G`, `H`, `I`. Más `C41` | Dar el monto a pagar cuanto antes |
-| **1B** | Todo, con los datos de identificación ya preguntados | Dejar el formato listo |
+| **1B** | Todo, con los datos de identificación ya preguntados. Incluye `I17` (fecha de diligenciamiento = hoy) | Dejar el formato listo |
 
-Las celdas que **no** afectan `total_aportes` —`D17`, `D18`, `D19`, `B23`, `C23:C27`, `D23:D27`,
-`E23:E27`, `D36` y los seis checkboxes de deducciones— pueden faltar en 1A sin alterar el monto.
+Las celdas que **no** afectan `total_aportes` —`D17`, `D18`, `D19`, `I17`, `B23`, `C23:C27`,
+`D23:D27`, `E23:E27`, `D36` y los seis checkboxes de deducciones— pueden faltar en 1A sin alterar
+el monto. `I17` es la **fecha de diligenciamiento**: el día en que se diligencia el formato, no una
+fecha del contrato ni del periodo. Va siempre en 1B; sin ella el cedular sale con ese campo en
+blanco y hay que rehacerlo.
 Verificado: el libro devuelve los aportes correctos sin nombre, sin correo y sin código QUIPU.
 
 El script limpia y reescribe el bloque en cada corrida, así que en 1B mandá el set **completo**,
